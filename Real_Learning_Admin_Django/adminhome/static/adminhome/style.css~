@@ -1,0 +1,18 @@
+h1
+{
+color:purple;
+}
+h2
+{
+color:white;
+}
+p
+{
+color:yellow;
+}
+body {
+height: 100px;
+  width: 500px;
+background: white url("images/index.jpeg") no-repeat;
+}
+

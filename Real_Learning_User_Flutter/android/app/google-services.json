@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241996727583",
+    "firebase_url": "https://learningapp-3032a.firebaseio.com",
+    "project_id": "learningapp-3032a",
+    "storage_bucket": "learningapp-3032a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241996727583:android:bf0e4f76bb9b56ae9a1c2a",
+        "android_client_info": {
+          "package_name": "com.learningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241996727583-7862drhl1m3kk0bssh7ng52e3irk0pn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHgExxOakI0TWr6WYcrXoAviqPH36UIX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241996727583-7862drhl1m3kk0bssh7ng52e3irk0pn9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+{% load static %}
+{%include 'header.html' %}
+	{% block content %}
+	{% endblock content %}
+ <link href="{% static 'adminhome/css/bootstrap.min.css'%}" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'adminhome/css/font-awesome.min.css'%}">
+	<link rel="stylesheet" href="{% static 'adminhome/css/animate.css'%}">
+
+
+	<link href="{% static 'adminhome/css/animate.min.css'%}" rel="stylesheet"> 
+	<!-- <link href="{% static 'adminhome/css/style.css'%}" rel="stylesheet" />	 -->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}"> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'adminhome/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'adminhome/css/root.css'%}">
+<!--===============================================================================================-->
+
+
+
+
+
+
+
+
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url('{% static 'adminhome/images/bg-01.jpg'%}');">
+					<span class="login100-form-title-1">
+						Add Question
+					</span>
+
+				</div>
+
+				
+	<form class="login100-form validate-form" action="../addquestionDB/" method="post">
+		{% csrf_token %}
+
+									<span class="focus-input100"></span>
+
+<div class="wrap-input100 validate-input m-b-26" data-validate="coursename is required">
+	<span class="label-input100">select course</span>
+
+			 <select  class="input100" id="coursename" name="coursename">
+			{% for item,id in  item_list%}
+			    <option value="{{ item.name }}">{{ item.name }}</option>
+			{% endfor %}
+			</select>	
+									<span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input m-b-26" data-validate="coursename is required">
+	<span class="label-input100">select topic</span>
+
+			 <select  class="input100" id="topicname" name="topicname">
+			{% for item in  tlist%}
+			    <option value="{{ item.topicname }}">{{ item.topicname }}</option>
+
+			{% endfor %}
+			</select>	
+									<span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+<span class="label-input100">enter question</span>
+
+
+		<input class="input100" type="text" name="question"  placeholder="Enter question">
+	
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+
+<span class="label-input100">enter option1</span>
+
+
+		<input class="input100" type="text" name="option1"  placeholder="Enter option1">
+	
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+
+<span class="label-input100">enter option2</span>
+
+
+		<input class="input100" type="text" name="option2"  placeholder="Enter option2">
+	
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+
+<span class="label-input100">enter option3</span>
+
+
+		<input class="input100" type="text" name="option3"  required="" placeholder="Enter option3">
+	
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+
+<span class="label-input100">enter option4</span>
+
+
+		<input class="input100" type="text" name="option4"  placeholder="Enter option4">
+	
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Question is required">		
+
+<span class="label-input100">enter answer</span>
+
+
+		<input class="input100" type="text" name="answer"  placeholder="Enter answer">
+	
+</div>
+
+
+
+
+<input type="submit" value="Add Question" class="login100-form-btn">
+				
+	</form>
+	
+
+			</div>
+		</div>
+	</div>
+	
+
+
+</body>
+
+
+
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $("#coursename").change(function() {
+    	var countryId = $(this).val();
+        //alert( $('option:selected', this).text() );
+      //  alert(countryId)
+      // window.location.href="http://127.0.0.1:8000/adminhome/addQuestion/"+"&course=countryId";
+      $.ajax(
+    {
+        type:"POST",
+        url: "http://127.0.0.1:8000/adminhome/addQuestion/",
+        data:{
+                 course:$(this).val()
+        },
+        success: function( data ) 
+        {
+         	  	Console.log(data)
+        }
+     })
+
+    });
+});
+
+</script>
+</html>

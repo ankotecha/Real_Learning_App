@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+{% load static %}
+{%include 'header.html' %}
+	{% block content %}
+	{% endblock content %}
+ <link href="{% static 'adminhome/css/bootstrap.min.css'%}" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'adminhome/css/font-awesome.min.css'%}">
+	<link rel="stylesheet" href="{% static 'adminhome/css/animate.css'%}">
+
+
+	<link href="{% static 'adminhome/css/animate.min.css'%}" rel="stylesheet"> 
+	<!-- <link href="{% static 'adminhome/css/style.css'%}" rel="stylesheet" />	 -->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}"> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'adminhome/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'adminhome/css/root.css'%}">
+<!--===============================================================================================-->
+
+
+
+
+
+
+
+
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url('{% static 'adminhome/images/bg-01.jpg'%}');">
+					<span class="login100-form-title-1">
+						Add course content
+					</span>
+
+				</div>
+
+				
+	<form class="login100-form validate-form" action="../uploadcoursecontent/" method="post">
+		{% csrf_token %}
+		<div id="demo">
+	<h2>available topic list</h2><br/>
+	{% for item in  tlist%}
+			    {{item.coursename}}--{{item.topicid}}
+			    <br/>
+			{% endfor %}
+</div>
+									<span class="focus-input100"></span>
+
+<div class="wrap-input100 validate-input m-b-26" data-validate="coursename is required">
+	<span class="label-input100">select course</span>
+
+			 <select  class="input100" id="courseid" name="courseid">
+			{% for item,id in  item_list%}
+			    <option value="{{ item.name }}">{{ item.name }}</option>
+			{% endfor %}
+			</select>	
+									<span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate = "topicname is required">		
+<span class="label-input100">enter topic name</span>
+
+
+		<input class="input100" type="text" name="topicname"  placeholder="Enter topicname">
+	
+</div>t
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
+						<span class="label-input100">Enter topicid</span>
+					<!-- 	<input class="input100" type="text" name="Description" id="Description" placeholder="Enter Description">
+					 -->	
+							<input class="input100" type="text" name="topicid"  placeholder="Enter topicid">
+
+						<span class="focus-input100"></span>
+</div>	
+<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
+						<span class="label-input100">Enter Data</span>
+					<!-- 	<input class="input100" type="text" name="Description" id="Description" placeholder="Enter Description">
+					 -->	<textarea class="input100"  name="topicdescription" id="Description" placeholder="Enter Description"></textarea>
+						<span class="focus-input100"></span>
+</div>	
+
+<input type="submit" value="Add Coursecontent" class="login100-form-btn">
+				
+	</form>
+	
+
+			</div>
+		</div>
+	</div>
+	
+
+
+</body>
+
+	</body>
+
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+						  <script src="https://cdn.tiny.cloud/1/kmtzk00vwpv7iqu60im7m6ocumk79314fu8siqif0wbcu2g5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+<script type="text/javascript">
+
+function myFunction() {
+	var firebaseConfig={
+  type: "service_account",
+  project_id: "learningapp-3032a",
+  private_key_id: "9f9a3b0ff9a08244c993eef36fcd87a5b715982c",
+  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDWnrqwe4ojB7mr\nz0W+fNVqo495EF5N7WWPpoQY/b8D1l2VCdvsvCdHrOoAF8Sx+BNFqKrhTT4WcjAk\nXfsMxO8enk6F5AowMdP4oTmgBFTtszt/Crw5Wgm2ujEjeWnZ+QHwlnOXgROZSzmI\nNwk31VSf5UaW45pVyZxnObjycLeBA60xCmWmPGivNRUBB5dsf0E14DKk5I3bz/RU\n41nHsh6x8UKyUUsd4DN+XhkYltl5dfPmsxKUbANfJCYQLhnVSWxoUPe3ez908OEc\nLyLY14O8y+2pnKK1cOdBfypBgNCettlP9mY2MHhFhpKhB+/6ON35lRMLPrxbFPHz\nmtiXtGH1AgMBAAECggEABHLY8njgowYjFKsO/CTvKjYKJ4K05wu5WTPPg2Cn/vNB\nc/9oin6QXzSikmdBDgyoV9ShMMyT+KnNthphCui3cJkIxzKXi3ikDGP0BvDeRHcR\n84f2/X+QgN6uQS41iQoCTPN4hQT7P69N7xiogOxwNboKr2ypqobkatPJBy12gElm\nKS79unBlVcDVPJEH30hEpyIuV4d0x0d2daQRCfWVOvwKS+FKUOhWhBq6saMX3CkY\nRJTAkDWboDND4X1RPdepwM/LDB4TSB/dxAVaNH6colaG44RGdi5FYgs4363ybgwn\nUGPoncQndDXnpJ52BAlfW3f0G8BaR+JkW/GdlCe7gQKBgQD1zcA4fSrXInHfnp7k\n4k6EzbA651EjRHBlOlKvWkSsYYdP3K/l59fDTkgnhXxESFqyMalh65/7JA76dFqr\nD2DesBapwk2fi7aNe/T4VXml4+wwo5h0m4r0YUXCO5BdT3GUJLVSecsTRHt4uDld\nSbHfOQv5LYF56Qy+b2l6oqrB8QKBgQDfhdTUfIzGNEjdLUyZL7/YXls+Jm83vQ9U\nA++EUEn2CfyoLl0uWwN6yInA1+hXGg+o1HameCT4WnLrehkFkQN5PFAGHKq+XE0x\nQ+1HBN3tFEoWLGiQziuh0xYOUXVESCAJDit83ncWn6FjDiR4gXzu2PRjaugi807j\nIZMzPjPcRQKBgC/U3u/fI4QDtucOBduCUkczg3Si6L4VJk38gHSQ+0YUIHGg/zWc\n3PareA0Aw8LB1axRT6W3ZUVIqgWAuNgKwQ30dCSKo/JFDLwRgAUHFQn8BU0duKAQ\nWITfnOSEFL6jo/VxAzvOaX8RV3mRV9BYc919S2Asw8JGYG16Xqs3lkTxAoGBAKYL\nGOswCrNCK86B1CEHo4/rqAQnMP9K5pQWyFqV+htXl+SnbHj/CzqutgYXXXU22uMj\n0XAgV/ZV2oCqluPXsajh8OBZc00t6/no596V8vYm2FJYcuT/AtKXqA7C3EX4/jM7\n33pHGFgqBQ08eEM8jb4wVHt18zPjYnq/ekXas1OxAoGAVdFIJiHhHHYRA0Ki2Vj5\nf5ol/6KG9aFH+3sdBcvZPi2/dkctDQvX5Ec8oMjGFF3KIVod/Xx35umSgWMLxY04\njJaDvi77uIPxNmQAYtYb93nuifFjM457AwgT9ZvXh9x3kRAvFXhfI3SNFPMKTtI0\nTp2s2oySHbJT6WKVzYOVH3E=\n-----END PRIVATE KEY-----\n",
+  client_email: "firebase-adminsdk-nk8nx@learningapp-3032a.iam.gserviceaccount.com",
+  client_id: "101372592204921787488",
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-nk8nx%40learningapp-3032a.iam.gserviceaccount.com"
+}
+
+  var x = document.getElementById("courseid").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+ firebase.initializeApp(firebaseConfig)
+  var db = firebase.database();
+
+}
+
+
+	var config = {
+  apiKey: 'AIzaSyDOOmv9NiDLYB7U4SE88xLsh2CW58q36Yk',
+  authDomain: 'learningapp-3032a.firebaseapp.com',
+  databaseURL: 'https://learningapp-3032a.firebaseio.com',
+  storageBucket: 'learningapp-3032a.appspot.com'
+};
+  firebase.initializeApp(config);
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+   function uploadimage(){
+  var storage = firebase.storage();
+  var file = document.getElementById("files").files[0];
+  var storageRef = storage.ref();
+  var thisref = storageRef.child("images/"+file.name).put(file);
+  thisref.on('state_changed',function(snapshot){
+  console.log("file uplaoded succesfully");
+  },
+  function(error) {
+  },
+  function() {
+  // Upload completed successfully, now we can get the download URL
+  var downloadURL = thisref.snapshot.downloadURL;
+  console.log("got url");
+  document.getElementById("url").value = downloadURL;
+  alert("file uploaded successfully");
+});
+    }
+</script>
+</html>
